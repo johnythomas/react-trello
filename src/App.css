@@ -1,0 +1,68 @@
+h1.title {
+  color: #e3dce6;
+  font-size: 20px;
+  font-family: Lobster;
+  cursor: pointer;
+}
+
+h1.title:hover {
+  color: #b9b3bb;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.title-container {
+  justify-content: center;
+  width: 100%;
+  background-color: rgb(116, 81, 135);
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.deck,
+.title-container {
+  display: flex;
+}
+
+.deck {
+  display: flex;
+  width: 80%;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.deck-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e2e4e6;
+  width: 100px;
+  min-height: 100px;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.deck-item:hover {
+  background-color: #c0c4c7;
+}
+
+.deck-name {
+  font-size: 16px;
+  color: #404040;
+}
+
+.add-deck {
+  color: #999;
+  font-size: 16px;
+}
+
+.deck-item:hover .add-deck {
+  color: #444343;
+}
