@@ -1,5 +1,5 @@
 import React from "react"
-import ListDecks from "./ListDecks"
+import ListBoards from "./ListBoards"
 import "./App.css"
 
 const App = () => (
@@ -7,7 +7,7 @@ const App = () => (
     <div className="title-container">
       <h1 className="title">React Trello</h1>
     </div>
-    <ListDecks />
+    <ListBoards />
   </div>
 )
 

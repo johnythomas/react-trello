@@ -11,8 +11,7 @@ h1.title:hover {
 
 .container {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 
 .title-container {

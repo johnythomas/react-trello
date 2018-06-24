@@ -1,12 +1,13 @@
-.deck-list {
+.board-list {
   display: flex;
   width: 80%;
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 50px;
+  align-self: center;
 }
 
-.deck-list-item {
+.board-list-item {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,28 +19,28 @@
   cursor: pointer;
 }
 
-.add-deck {
+.add-board {
   color: hsla(0, 0%, 100%, 0.7);
   font-size: 16px;
   background-color: rgba(0, 0, 0, 0.12);
 }
 
-.add-deck:hover {
+.add-board:hover {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.deck-list-deck {
+.board-list-board {
   background-color: #e2e4e6;
 }
 
-.deck-list-deck:hover {
+.board-list-board:hover {
   background-color: #c0c4c7;
 }
 
 .bottom-shadow {
-  -webkit-box-shadow: 0 10px 6px -6px #603573;
-  -moz-box-shadow: 0 10px 6px -6px #603573;
-  box-shadow: 0 10px 6px -6px #603573;
+  -webkit-box-shadow: 0 1px 0 #afafaf;
+  -moz-box-shadow: 0 1px 0 #afafaf;
+  box-shadow: 0 1px 0 #afafaf;
 }
 
 .bottom-shadow:hover {
@@ -48,7 +49,7 @@
   box-shadow: 0;
 }
 
-.deck-name {
+.board-name {
   font-size: 16px;
   color: #404040;
 }
