@@ -1,5 +1,7 @@
 import React from "react"
+import { Route, Switch } from "react-router-dom"
 import ListBoards from "./ListBoards"
+import Board from "./Board"
 import "./App.css"
 
 const App = () => (
@@ -7,7 +9,10 @@ const App = () => (
     <div className="title-container">
       <h1 className="title">React Trello</h1>
     </div>
-    <ListBoards />
+    <Switch>
+      <Route exact path="/" component={ListBoards} />
+      <Route exact path="/board" component={Board} />
+    </Switch>
   </div>
 )
 
