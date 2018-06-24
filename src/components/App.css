@@ -1,0 +1,25 @@
+h1.title {
+  color: #e3dce6;
+  font-size: 20px;
+  font-family: Lobster;
+  cursor: pointer;
+}
+
+h1.title:hover {
+  color: #b9b3bb;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.title-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: rgb(116, 81, 135);
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
