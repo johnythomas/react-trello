@@ -1,5 +1,7 @@
 import React, { Fragment } from "react"
+import PropTypes from "prop-types"
 import { connect } from "react-redux"
+import { Link } from "react-router-dom"
 import "./ListBoards.css"
 
 const ListBoards = ({ boards }) => (
@@ -10,14 +12,26 @@ const ListBoards = ({ boards }) => (
       </a>
       {boards.map(board => (
         <Fragment key={board.id}>
-          <div className="board-list-item board-list-board bottom-shadow">
+          <Link
+            className="board-list-item board-list-board bottom-shadow"
+            to={`/board/${board.id}`}
+          >
             <h2 className="board-name">{board.name}</h2>
-          </div>
+          </Link>
         </Fragment>
       ))}
     </div>
   </Fragment>
 )
+
+ListBoards.propTypes = {
+  boards: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired
+    }).isRequired
+  ).isRequired
+}
 
 const mapStateToProps = state => ({
   boards: Object.values(state.boards)

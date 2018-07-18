@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
-import { Route, Switch } from "react-router-dom"
+import { BrowserRouter, Route, Switch } from "react-router-dom"
 import { connect } from "react-redux"
 import ListBoards from "./ListBoards"
 import Board from "./Board"
@@ -14,15 +14,17 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="title-container">
-          <h1 className="title">React Trello</h1>
+      <BrowserRouter>
+        <div className="container">
+          <div className="title-container">
+            <h1 className="title">React Trello</h1>
+          </div>
+          <Switch>
+            <Route exact path="/" component={ListBoards} />
+            <Route exact path="/board/:id" component={Board} />
+          </Switch>
         </div>
-        <Switch>
-          <Route exact path="/" component={ListBoards} />
-          <Route exact path="/board" component={Board} />
-        </Switch>
-      </div>
+      </BrowserRouter>
     )
   }
 }
