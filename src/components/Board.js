@@ -1,7 +1,7 @@
 import React from "react"
 import "./Board.css"
 
-const Deck = () => (
+const Board = () => (
   <div className="board">
     <div className="list">
       <h3 className="list-heading">List Name</h3>
@@ -39,4 +39,4 @@ const Deck = () => (
   </div>
 )
 
-export default Deck
+export default Board

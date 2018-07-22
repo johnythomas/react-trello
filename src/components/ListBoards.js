@@ -1,10 +1,11 @@
 import React, { Fragment } from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
-import { Link } from "react-router-dom"
+import { withRouter } from "react-router-dom"
+import { fetchBoard } from "../actions/boards"
 import "./ListBoards.css"
 
-const ListBoards = ({ boards }) => (
+const ListBoards = ({ boards, history, getBoard }) => (
   <Fragment>
     <div className="board-list">
       <a className="board-list-item add-board" href="#">
@@ -12,12 +13,15 @@ const ListBoards = ({ boards }) => (
       </a>
       {boards.map(board => (
         <Fragment key={board.id}>
-          <Link
+          <button
             className="board-list-item board-list-board bottom-shadow"
-            to={`/board/${board.id}`}
+            onClick={() => {
+              getBoard(board.id)
+              history.push(`/board/${board.id}`)
+            }}
           >
             <h2 className="board-name">{board.name}</h2>
-          </Link>
+          </button>
         </Fragment>
       ))}
     </div>
@@ -37,4 +41,7 @@ const mapStateToProps = state => ({
   boards: Object.values(state.boards)
 })
 
-export default connect(mapStateToProps)(ListBoards)
+export default connect(
+  mapStateToProps,
+  { getBoard: fetchBoard }
+)(withRouter(ListBoards))
