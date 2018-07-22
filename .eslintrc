@@ -23,6 +23,13 @@
     "jest/prefer-to-have-length": "warn",
     "jest/valid-expect": "error",
     "semi": [2, "never"],
-    "import/prefer-default-export": false
+    "import/prefer-default-export": false,
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["to"]
+      }
+    ]
   }
 }
