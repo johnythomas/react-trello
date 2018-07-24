@@ -1,11 +1,12 @@
-h1.title {
+.title {
   color: #e3dce6;
   font-size: 20px;
   font-family: Lobster;
   cursor: pointer;
+  text-decoration: none;
 }
 
-h1.title:hover {
+.title:hover {
   color: #b9b3bb;
 }
 
