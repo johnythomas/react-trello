@@ -34,7 +34,11 @@ ListBoards.propTypes = {
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired
     }).isRequired
-  ).isRequired
+  ).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }).isRequired,
+  getBoard: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
