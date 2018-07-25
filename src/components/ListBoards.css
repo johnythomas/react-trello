@@ -31,6 +31,7 @@
 
 .board-list-board {
   background-color: #e2e4e6;
+  text-decoration: none;
 }
 
 .board-list-board:hover {
