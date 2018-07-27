@@ -19,16 +19,6 @@
   cursor: pointer;
 }
 
-.add-board {
-  color: hsla(0, 0%, 100%, 0.7);
-  font-size: 16px;
-  background-color: rgba(0, 0, 0, 0.12);
-}
-
-.add-board:hover {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
 .board-list-board {
   background-color: #e2e4e6;
   text-decoration: none;

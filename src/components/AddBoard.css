@@ -1,0 +1,28 @@
+.add-board {
+  color: hsla(0, 0%, 100%, 0.7);
+  font-size: 16px;
+  background-color: rgba(0, 0, 0, 0.12);
+  border: none;
+  width: 120px;
+  text-decoration: underline;
+}
+
+.add-board:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.add-board-form-container {
+  display: flex;
+  flex-direction: row;
+  background-color: #e2e4e6;
+}
+
+.add-board-input {
+  max-width: 118px;
+}
+
+.cancel-btn {
+  border: none;
+  background-color: none;
+  margin-left: 10px;
+}

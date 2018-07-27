@@ -4,13 +4,12 @@ import { connect } from "react-redux"
 import { Link, withRouter } from "react-router-dom"
 import { fetchBoard } from "../actions/boards"
 import "./ListBoards.css"
+import AddBoard from "./AddBoard"
 
 const ListBoards = ({ boards }) => (
   <Fragment>
     <div className="board-list">
-      <a className="board-list-item add-board" href="#">
-        Add board
-      </a>
+      <AddBoard />
       {boards.map(board => (
         <Link
           key={board.id}
