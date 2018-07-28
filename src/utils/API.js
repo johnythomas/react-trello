@@ -25,3 +25,13 @@ export const saveBoard = board =>
     if (res.status !== 200) throw res
     return res.json()
   })
+
+export const addList = (boardId, list) =>
+  fetch(`${api}/board/${boardId}/list/`, {
+    method: "post",
+    body: JSON.stringify(list),
+    headers: { "Content-Type": "application/json" }
+  }).then(res => {
+    if (res.status !== 200) throw res
+    return res.json()
+  })
