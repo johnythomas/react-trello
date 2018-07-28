@@ -1,5 +1,4 @@
-import { BOARD_FETCHED } from "../actions/boards"
-import { LIST_ADDED } from "../actions/list"
+import { BOARD_FETCHED, LIST_ADDED } from "../utils/types"
 
 const list = (state = {}, action) => {
   switch (action.type) {

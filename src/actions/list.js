@@ -1,9 +1,7 @@
 import { normalize } from "normalizr"
 import List from "../schemas/List"
 import * as API from "../utils/API"
-
-export const ADD_LIST = "ADD_LIST"
-export const LIST_ADDED = "LIST_ADDED"
+import { LIST_ADDED } from "../utils/types"
 
 export const listAdded = (boardId, entities) => ({
   type: LIST_ADDED,

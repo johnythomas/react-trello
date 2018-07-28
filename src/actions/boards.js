@@ -1,10 +1,7 @@
 import * as API from "../utils/API"
 import { normalize } from "normalizr"
 import Board from "../schemas/Board"
-
-export const BOARDS_FETCHED = "BOARDS_FETCHED"
-export const BOARD_FETCHED = "BOARD_FETCHED"
-export const BOARD_ADDED = "BOARD_ADDED"
+import { BOARDS_FETCHED, BOARD_FETCHED, BOARD_ADDED } from "../utils/types"
 
 export const boardsFetched = boards => ({
   type: BOARDS_FETCHED,
