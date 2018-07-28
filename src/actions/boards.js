@@ -11,9 +11,9 @@ export const boardsFetched = boards => ({
   boards
 })
 
-export const boardFetched = entites => ({
+export const boardFetched = entities => ({
   type: BOARD_FETCHED,
-  entites
+  entities
 })
 
 export const boardAdded = board => ({

@@ -1,0 +1,49 @@
+.add-list {
+  color: hsla(0, 0%, 100%, 0.7);
+  font-size: 14px;
+  background-color: rgba(0, 0, 0, 0.12);
+  padding: 12px 10px 12px 10px;
+  border-radius: 3px;
+  border-width: 0px;
+  cursor: pointer;
+  height: 52px;
+  width: 270px;
+  margin-left: 5px;
+}
+
+.add-list:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.add-list-form {
+  background: #e2e4e6;
+  width: 260px;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.list-name-input {
+  width: 226px;
+  border-radius: 3px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid black;
+}
+
+.add-list-form-action {
+  margin-top: 20px;
+}
+
+.submit-btn {
+  padding: 10px;
+  background-color: #5aac44;
+  border-radius: 3px;
+  border-width: 0px;
+}
+
+.cancel-btn {
+  border: none;
+  background-color: none;
+  margin-left: 15px;
+  font-size: 18px;
+}

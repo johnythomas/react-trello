@@ -5,7 +5,7 @@ const item = (state = {}, action) => {
     case BOARD_FETCHED:
       return {
         ...state,
-        ...action.entites.items
+        ...action.entities.items
       }
     default:
       return state
