@@ -15,3 +15,13 @@ export const getBoard = async id => {
   )
   return board
 }
+
+export const saveBoard = board =>
+  fetch(`${api}/board/`, {
+    method: "post",
+    body: JSON.stringify(board),
+    headers: { "Content-Type": "application/json" }
+  }).then(res => {
+    if (res.status !== 200) throw res
+    return res.json()
+  })

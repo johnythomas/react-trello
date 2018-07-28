@@ -1,8 +1,15 @@
 import React, { Component, Fragment } from "react"
+import PropTypes from "prop-types"
+import { connect } from "react-redux"
 import "@fortawesome/fontawesome-free/css/all.min.css"
 import "./AddBoard.css"
+import { addBoard } from "../actions/boards"
 
 class AddBoard extends Component {
+  static propTypes = {
+    storeBoard: PropTypes.func.isRequired
+  }
+
   state = {
     isAddEnabled: false,
     boardName: ""
@@ -17,6 +24,14 @@ class AddBoard extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
+    const { boardName } = this.state
+    if (!boardName) return
+    this.props.storeBoard({
+      board: {
+        name: boardName
+      }
+    })
+    this.setState(() => ({ boardName: "", isAddEnabled: false }))
   }
 
   toggleAddEnabled = () => {
@@ -58,4 +73,11 @@ class AddBoard extends Component {
   }
 }
 
-export default AddBoard
+const mapDispatchToProps = {
+  storeBoard: addBoard
+}
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(AddBoard)

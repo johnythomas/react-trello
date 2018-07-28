@@ -1,4 +1,4 @@
-import { BOARDS_FETCHED, BOARD_FETCHED } from "../actions/boards"
+import { BOARDS_FETCHED, BOARD_FETCHED, BOARD_ADDED } from "../actions/boards"
 
 const boards = (state = {}, action) => {
   switch (action.type) {
@@ -15,6 +15,11 @@ const boards = (state = {}, action) => {
       return {
         ...state,
         ...action.entites.boards
+      }
+    case BOARD_ADDED:
+      return {
+        ...state,
+        ...action.board
       }
     default:
       return state
