@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import AddList from "./AddList"
+import AddListItem from "./AddListItem"
 import "./Board.css"
 
 const Board = ({ board, lists, items }) => (
@@ -14,6 +15,7 @@ const Board = ({ board, lists, items }) => (
               <span className="list-item-text">{items[itemId].title}</span>
             </div>
           ))}
+        <AddListItem board={board.id} list={list.id} />
       </div>
     ))}
     <AddList />
@@ -22,6 +24,7 @@ const Board = ({ board, lists, items }) => (
 
 Board.propTypes = {
   board: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired
   }).isRequired,
   lists: PropTypes.arrayOf(

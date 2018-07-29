@@ -35,3 +35,13 @@ export const addList = (boardId, list) =>
     if (res.status !== 200) throw res
     return res.json()
   })
+
+export const addItem = (boardId, listId, item) =>
+  fetch(`${api}/board/${boardId}/list/${listId}/item`, {
+    method: "post",
+    body: JSON.stringify(item),
+    headers: { "Content-Type": "application/json" }
+  }).then(res => {
+    if (res.status !== 200) throw res
+    return res.json()
+  })

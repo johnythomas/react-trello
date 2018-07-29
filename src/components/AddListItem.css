@@ -1,0 +1,50 @@
+.add-list-item-btn {
+  font-size: 14px;
+  padding: 10px;
+  margin: 0;
+  border-radius: 3px;
+  border-width: 0px;
+  color: #7d7d7d;
+  cursor: pointer;
+  background-color: none;
+  text-align: left;
+  margin-top: 5px;
+}
+
+.add-list-item-btn:hover {
+  background-color: #ccc;
+  color: #545353;
+  text-decoration: underline;
+}
+
+.add-list-item-btn-text {
+  margin-left: 5px;
+}
+
+.add-list-item-form-input {
+  margin-top: 5px;
+  width: 225px;
+  border-radius: 3px;
+  border: 1px solid #000;
+  padding: 10px;
+}
+
+.add-list-item-form-action {
+  margin-top: 10px;
+}
+
+.submit-btn {
+  padding: 10px;
+  background-color: #5aac44;
+  border-radius: 3px;
+  border-width: 0px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.cancel-btn {
+  border: none;
+  background-color: none;
+  margin-left: 15px;
+  font-size: 18px;
+}

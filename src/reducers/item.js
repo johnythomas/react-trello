@@ -1,8 +1,9 @@
-import { BOARD_FETCHED } from "../utils/types"
+import { BOARD_FETCHED, ITEM_ADDED } from "../utils/types"
 
 const item = (state = {}, action) => {
   switch (action.type) {
     case BOARD_FETCHED:
+    case ITEM_ADDED:
       return {
         ...state,
         ...action.entities.items
