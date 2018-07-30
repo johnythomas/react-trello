@@ -45,7 +45,7 @@ class AddBoard extends Component {
       <Fragment>
         {this.state.isAddEnabled ? (
           <div className="board-list-item add-board-form-container">
-            <form>
+            <form onSubmit={this.handleSubmit}>
               <input
                 className="add-board-input"
                 type="text"
@@ -53,8 +53,9 @@ class AddBoard extends Component {
                 value={this.state.boardName}
                 onChange={this.handleNameChange}
               />
-              <button onClick={this.handleSubmit}>Add Board</button>
+              <button type="submit">Add Board</button>
               <button
+                type="button"
                 className="fa fa-times cancel-btn"
                 onClick={this.toggleAddEnabled}
               />

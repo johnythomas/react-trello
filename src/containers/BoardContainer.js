@@ -12,7 +12,11 @@ class BoardContainer extends Component {
       }).isRequired
     }).isRequired,
     getBoard: PropTypes.func.isRequired,
-    board: PropTypes.shape({})
+    board: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      lists: PropTypes.arrayOf(PropTypes.number.isRequired)
+    })
   }
 
   static defaultProps = {
@@ -29,17 +33,9 @@ class BoardContainer extends Component {
   }
 }
 
-const mapStateToProps = (state, props) => {
-  const board = state.boards[props.match.params.id]
-  const { lists, items } = state
-  const boardLists =
-    !!board && board.lists ? board.lists.map(listId => lists[listId]) : []
-  return {
-    board,
-    lists: boardLists,
-    items
-  }
-}
+const mapStateToProps = (state, props) => ({
+  board: state.boards[props.match.params.id]
+})
 
 const mapDispatchToProps = {
   getBoard: fetchBoard
