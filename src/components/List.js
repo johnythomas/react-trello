@@ -19,13 +19,66 @@ class List extends Component {
     }).isRequired
   }
 
-  state = {}
+  constructor(props) {
+    super(props)
+    this.state = {
+      titleEditMode: false,
+      title: props.list.name
+    }
+  }
+
+  componentDidUpdate = prevProps => {
+    if (this.props.list.name !== prevProps.list.name) {
+      this.setState(() => ({
+        title: this.props.list.name
+      }))
+    }
+  }
+
+  handleTitleChange = e => {
+    const { value } = e.target
+    this.setState(() => ({
+      title: value
+    }))
+  }
+
+  toggleEditMode = async () => {
+    await this.setState(currentState => ({
+      titleEditMode: !currentState.titleEditMode
+    }))
+    if (this.state.titleEditMode && !!this.titleInput) {
+      this.titleInput.focus()
+    }
+  }
 
   render() {
     const { list, items, boardId } = this.props
+    const { titleEditMode, title } = this.state
     return (
       <div className="list" key={list.id}>
-        <h3 className="list-heading">{list.name}</h3>
+        {titleEditMode ? (
+          <div>
+            <input
+              className="list-title-input"
+              type="text"
+              ref={input => {
+                this.titleInput = input
+              }}
+              value={title}
+              onChange={this.handleTitleChange}
+              onBlur={this.toggleEditMode}
+              onKeyPress={e => {
+                if (e.key === "Enter") {
+                  this.toggleEditMode()
+                }
+              }}
+            />
+          </div>
+        ) : (
+          <button className="list-heading" onClick={this.toggleEditMode}>
+            {list.name}
+          </button>
+        )}
         {list.items &&
           list.items.map(itemId => (
             <div className="list-item" key={itemId}>
