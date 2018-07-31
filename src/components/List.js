@@ -56,29 +56,34 @@ class List extends Component {
     const { titleEditMode, title } = this.state
     return (
       <div className="list" key={list.id}>
-        {titleEditMode ? (
-          <div>
-            <input
-              className="list-title-input"
-              type="text"
-              ref={input => {
-                this.titleInput = input
-              }}
-              value={title}
-              onChange={this.handleTitleChange}
-              onBlur={this.toggleEditMode}
-              onKeyPress={e => {
-                if (e.key === "Enter") {
-                  this.toggleEditMode()
-                }
-              }}
-            />
+        <div className="list-title-container">
+          {titleEditMode ? (
+            <div className="list-title-container-column">
+              <input
+                className="list-title-input"
+                type="text"
+                ref={input => {
+                  this.titleInput = input
+                }}
+                value={title}
+                onChange={this.handleTitleChange}
+                onBlur={this.toggleEditMode}
+                onKeyPress={e => e.key === "Enter" && this.toggleEditMode()}
+              />
+            </div>
+          ) : (
+            <div className="list-title-container-column">
+              <button className="list-heading" onClick={this.toggleEditMode}>
+                {list.name}
+              </button>
+            </div>
+          )}
+          <div className="list-title-container-column">
+            <button className="list-action-btn" type="button">
+              <i className="fas fa-trash-alt" />
+            </button>
           </div>
-        ) : (
-          <button className="list-heading" onClick={this.toggleEditMode}>
-            {list.name}
-          </button>
-        )}
+        </div>
         {list.items &&
           list.items.map(itemId => (
             <div className="list-item" key={itemId}>

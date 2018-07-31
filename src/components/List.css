@@ -18,6 +18,29 @@
   text-align: left;
   font-size: 16px;
   font-weight: bold;
+  cursor: pointer;
+}
+
+.list-title-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.list-title-container-column {
+  display: flex;
+}
+
+.list-action-btn {
+  padding: 5px 10px 5px 10px;
+  border-radius: 3px;
+  color: #7d7d7d;
+}
+
+.list-action-btn:hover {
+  background-color: #ccc;
+  color: #545353;
 }
 
 .list-title-input {
@@ -29,6 +52,11 @@
   font-size: 16px;
   font-weight: bold;
   width: 100%;
+}
+
+.list-action-btn {
+  background: none;
+  border: 0px;
 }
 
 .list-item {
