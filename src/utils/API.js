@@ -36,6 +36,16 @@ export const addList = (boardId, list) =>
     return res.json()
   })
 
+export const updateList = (boardId, list) =>
+  fetch(`${api}/board/${boardId}/list/${list.id}`, {
+    method: "put",
+    body: JSON.stringify({ list: { name: list.name } }),
+    headers: { "Content-Type": "application/json" }
+  }).then(res => {
+    if (res.status !== 200) throw res
+    return res.json()
+  })
+
 export const addItem = (boardId, listId, item) =>
   fetch(`${api}/board/${boardId}/list/${listId}/item`, {
     method: "post",

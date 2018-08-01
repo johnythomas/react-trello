@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import AddListItem from "./AddListItem"
 import "./List.css"
+import { updateList } from "../actions/list"
 
 class List extends Component {
   static propTypes = {
@@ -16,7 +17,8 @@ class List extends Component {
         id: PropTypes.number.isRequired,
         body: PropTypes.string.isRequired
       })
-    }).isRequired
+    }).isRequired,
+    saveUpdatedListName: PropTypes.func.isRequired
   }
 
   constructor(props) {
@@ -48,6 +50,13 @@ class List extends Component {
     }))
     if (this.state.titleEditMode && !!this.titleInput) {
       this.titleInput.focus()
+    }
+    const { boardId, list } = this.props
+    if (!this.state.titleEditMode && list.name !== this.state.title) {
+      this.props.saveUpdatedListName(boardId, {
+        id: list.id,
+        name: this.state.title
+      })
     }
   }
 
@@ -102,4 +111,11 @@ const mapStateToProps = (state, { boardId, listId }) => ({
   items: state.items
 })
 
-export default connect(mapStateToProps)(List)
+const mapDispatchToProps = {
+  saveUpdatedListName: updateList
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(List)

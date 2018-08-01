@@ -1,4 +1,9 @@
-import { BOARD_FETCHED, LIST_ADDED, ITEM_ADDED } from "../utils/types"
+import {
+  BOARD_FETCHED,
+  LIST_ADDED,
+  ITEM_ADDED,
+  LIST_UPDATED
+} from "../utils/types"
 
 const list = (state = {}, action) => {
   switch (action.type) {
@@ -18,6 +23,16 @@ const list = (state = {}, action) => {
           items: state[listId].items
             ? state[listId].items.concat([itemId])
             : [itemId]
+        }
+      }
+    }
+    case LIST_UPDATED: {
+      const { id, name } = action.list
+      return {
+        ...state,
+        [id]: {
+          ...state[id],
+          name
         }
       }
     }
