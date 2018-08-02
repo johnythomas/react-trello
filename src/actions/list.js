@@ -1,7 +1,7 @@
 import { normalize } from "normalizr"
 import List from "../schemas/List"
 import * as API from "../utils/API"
-import { LIST_ADDED, LIST_UPDATED } from "../utils/types"
+import { LIST_ADDED, LIST_UPDATED, LIST_DELETED } from "../utils/types"
 
 export const listAdded = (boardId, entities) => ({
   type: LIST_ADDED,
@@ -12,6 +12,12 @@ export const listAdded = (boardId, entities) => ({
 export const listUpdated = list => ({
   type: LIST_UPDATED,
   list
+})
+
+export const listDeleted = (boardId, listId) => ({
+  type: LIST_DELETED,
+  listId,
+  boardId
 })
 
 export const addList = (boardId, list) => async dispatch => {
@@ -29,5 +35,14 @@ export const updateList = (boardId, list) => async dispatch => {
     dispatch(listUpdated(list))
   } catch (err) {
     console.error(err)
+  }
+}
+
+export const deleteList = (boardId, listId) => async dispatch => {
+  try {
+    await API.deleteList(boardId, listId)
+    dispatch(listDeleted(boardId, listId))
+  } catch (err) {
+    console.log(err)
   }
 }

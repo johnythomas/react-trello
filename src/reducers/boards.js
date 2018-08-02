@@ -2,7 +2,8 @@ import {
   BOARDS_FETCHED,
   BOARD_FETCHED,
   BOARD_ADDED,
-  LIST_ADDED
+  LIST_ADDED,
+  LIST_DELETED
 } from "../utils/types"
 
 const boards = (state = {}, action) => {
@@ -36,6 +37,16 @@ const boards = (state = {}, action) => {
             ...state[boardId].lists,
             Number(Object.keys(entities.lists)[0])
           ]
+        }
+      }
+    }
+    case LIST_DELETED: {
+      const { boardId, listId } = action
+      return {
+        ...state,
+        [boardId]: {
+          ...state[boardId],
+          lists: state[boardId].lists.filter(lId => lId !== listId)
         }
       }
     }

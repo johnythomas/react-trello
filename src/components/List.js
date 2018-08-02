@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import AddListItem from "./AddListItem"
 import "./List.css"
-import { updateList } from "../actions/list"
+import { updateList, deleteList } from "../actions/list"
 
 class List extends Component {
   static propTypes = {
@@ -61,7 +61,7 @@ class List extends Component {
   }
 
   render() {
-    const { list, items, boardId } = this.props
+    const { list, items, boardId, removeList } = this.props
     const { titleEditMode, title } = this.state
     return (
       <div className="list" key={list.id}>
@@ -88,7 +88,11 @@ class List extends Component {
             </div>
           )}
           <div className="list-title-container-column">
-            <button className="list-action-btn" type="button">
+            <button
+              className="list-action-btn"
+              type="button"
+              onClick={() => removeList(boardId, list.id)}
+            >
               <i className="fas fa-trash-alt" />
             </button>
           </div>
@@ -112,7 +116,8 @@ const mapStateToProps = (state, { boardId, listId }) => ({
 })
 
 const mapDispatchToProps = {
-  saveUpdatedListName: updateList
+  saveUpdatedListName: updateList,
+  removeList: deleteList
 }
 
 export default connect(

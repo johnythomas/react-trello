@@ -36,6 +36,13 @@ export const addList = (boardId, list) =>
     return res.json()
   })
 
+export const deleteList = (boardId, listId) =>
+  fetch(`${api}/board/${boardId}/list/${listId}`, {
+    method: "delete"
+  }).then(res => {
+    if (res.status !== 200) throw res
+  })
+
 export const updateList = (boardId, list) =>
   fetch(`${api}/board/${boardId}/list/${list.id}`, {
     method: "put",

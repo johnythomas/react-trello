@@ -2,7 +2,8 @@ import {
   BOARD_FETCHED,
   LIST_ADDED,
   ITEM_ADDED,
-  LIST_UPDATED
+  LIST_UPDATED,
+  LIST_DELETED
 } from "../utils/types"
 
 const list = (state = {}, action) => {
@@ -35,6 +36,11 @@ const list = (state = {}, action) => {
           name
         }
       }
+    }
+    case LIST_DELETED: {
+      const newState = { ...state }
+      delete newState[action.listId]
+      return { ...newState }
     }
     default:
       return state
