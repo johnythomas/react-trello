@@ -1,4 +1,4 @@
-import { BOARD_FETCHED, ITEM_ADDED } from "../utils/types"
+import { BOARD_FETCHED, ITEM_ADDED, LIST_DELETED } from "../utils/types"
 
 const item = (state = {}, action) => {
   switch (action.type) {
@@ -8,6 +8,17 @@ const item = (state = {}, action) => {
         ...state,
         ...action.entities.items
       }
+    case LIST_DELETED:
+      return Object.keys(state).reduce(
+        (acc, itemId) =>
+          Number(state[itemId].listId) === action.listId
+            ? acc
+            : {
+                ...acc,
+                [itemId]: state[itemId]
+              },
+        {}
+      )
     default:
       return state
   }
