@@ -18,7 +18,8 @@ class List extends Component {
         body: PropTypes.string.isRequired
       })
     }).isRequired,
-    saveUpdatedListName: PropTypes.func.isRequired
+    saveUpdatedListName: PropTypes.func.isRequired,
+    removeList: PropTypes.func.isRequired
   }
 
   constructor(props) {
