@@ -102,6 +102,9 @@ class List extends Component {
           list.items.map(itemId => (
             <div className="list-item" key={itemId}>
               <span className="list-item-text">{items[itemId].title}</span>
+              <button className="delete-item-btn">
+                <i className="fas fa-trash-alt" />
+              </button>
             </div>
           ))}
         <AddListItem board={boardId} list={list.id} />
