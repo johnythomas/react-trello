@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import AddListItem from "./AddListItem"
 import "./List.css"
 import { updateList, deleteList } from "../actions/list"
+import { deleteItem } from "../actions/Items"
 
 class List extends Component {
   static propTypes = {
@@ -19,7 +20,8 @@ class List extends Component {
       })
     }).isRequired,
     saveUpdatedListName: PropTypes.func.isRequired,
-    removeList: PropTypes.func.isRequired
+    removeList: PropTypes.func.isRequired,
+    removeItem: PropTypes.func.isRequired
   }
 
   constructor(props) {
@@ -62,7 +64,7 @@ class List extends Component {
   }
 
   render() {
-    const { list, items, boardId, removeList } = this.props
+    const { list, items, boardId, removeList, removeItem } = this.props
     const { titleEditMode, title } = this.state
     return (
       <div className="list" key={list.id}>
@@ -102,7 +104,10 @@ class List extends Component {
           list.items.map(itemId => (
             <div className="list-item" key={itemId}>
               <span className="list-item-text">{items[itemId].title}</span>
-              <button className="delete-item-btn">
+              <button
+                className="delete-item-btn"
+                onClick={() => removeItem(boardId, list.id, itemId)}
+              >
                 <i className="fas fa-trash-alt" />
               </button>
             </div>
@@ -121,7 +126,8 @@ const mapStateToProps = (state, { boardId, listId }) => ({
 
 const mapDispatchToProps = {
   saveUpdatedListName: updateList,
-  removeList: deleteList
+  removeList: deleteList,
+  removeItem: deleteItem
 }
 
 export default connect(

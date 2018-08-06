@@ -3,7 +3,8 @@ import {
   LIST_ADDED,
   ITEM_ADDED,
   LIST_UPDATED,
-  LIST_DELETED
+  LIST_DELETED,
+  ITEM_DELETED
 } from "../utils/types"
 
 const list = (state = {}, action) => {
@@ -41,6 +42,16 @@ const list = (state = {}, action) => {
       const newState = { ...state }
       delete newState[action.listId]
       return { ...newState }
+    }
+    case ITEM_DELETED: {
+      const { listId, itemId } = action
+      return {
+        ...state,
+        [listId]: {
+          ...state[listId],
+          items: state[listId].items.filter(id => Number(id) !== itemId)
+        }
+      }
     }
     default:
       return state

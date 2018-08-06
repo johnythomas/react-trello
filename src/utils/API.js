@@ -62,3 +62,10 @@ export const addItem = (boardId, listId, item) =>
     if (res.status !== 200) throw res
     return res.json()
   })
+
+export const deleteItem = (boardId, listId, itemId) =>
+  fetch(`${api}/board/${boardId}/list/${listId}/item/${itemId}`, {
+    method: "delete"
+  }).then(res => {
+    if (res.status !== 200) throw res
+  })

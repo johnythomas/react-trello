@@ -1,4 +1,9 @@
-import { BOARD_FETCHED, ITEM_ADDED, LIST_DELETED } from "../utils/types"
+import {
+  BOARD_FETCHED,
+  ITEM_ADDED,
+  LIST_DELETED,
+  ITEM_DELETED
+} from "../utils/types"
 
 const item = (state = {}, action) => {
   switch (action.type) {
@@ -19,6 +24,11 @@ const item = (state = {}, action) => {
               },
         {}
       )
+    case ITEM_DELETED: {
+      const newState = { ...state }
+      delete newState[action.itemId]
+      return { ...newState }
+    }
     default:
       return state
   }
