@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import AddListItem from "./AddListItem"
 import "./List.css"
 import { updateList, deleteList } from "../actions/list"
-import { deleteItem } from "../actions/Items"
+import Item from "./Item"
 
 class List extends Component {
   static propTypes = {
@@ -13,15 +13,8 @@ class List extends Component {
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired
     }).isRequired,
-    items: PropTypes.shape({
-      id: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        body: PropTypes.string.isRequired
-      })
-    }).isRequired,
     saveUpdatedListName: PropTypes.func.isRequired,
-    removeList: PropTypes.func.isRequired,
-    removeItem: PropTypes.func.isRequired
+    removeList: PropTypes.func.isRequired
   }
 
   constructor(props) {
@@ -64,7 +57,7 @@ class List extends Component {
   }
 
   render() {
-    const { list, items, boardId, removeList, removeItem } = this.props
+    const { list, boardId, removeList } = this.props
     const { titleEditMode, title } = this.state
     return (
       <div className="list" key={list.id}>
@@ -102,15 +95,12 @@ class List extends Component {
         </div>
         {list.items &&
           list.items.map(itemId => (
-            <div className="list-item" key={itemId}>
-              <span className="list-item-text">{items[itemId].title}</span>
-              <button
-                className="delete-item-btn"
-                onClick={() => removeItem(boardId, list.id, itemId)}
-              >
-                <i className="fas fa-trash-alt" />
-              </button>
-            </div>
+            <Item
+              key={itemId}
+              itemId={itemId}
+              listId={list.id}
+              boardId={boardId}
+            />
           ))}
         <AddListItem board={boardId} list={list.id} />
       </div>
@@ -120,14 +110,12 @@ class List extends Component {
 
 const mapStateToProps = (state, { boardId, listId }) => ({
   boardId,
-  list: state.lists[listId],
-  items: state.items
+  list: state.lists[listId]
 })
 
 const mapDispatchToProps = {
   saveUpdatedListName: updateList,
-  removeList: deleteList,
-  removeItem: deleteItem
+  removeList: deleteList
 }
 
 export default connect(
