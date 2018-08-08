@@ -1,5 +1,28 @@
 .board {
   display: flex;
-  margin-top: 40px;
-  overflow-y: scroll;
+  flex-wrap: wrap;
+}
+
+.board-title-container {
+  flex: 0 0 100%;
+  margin: 10px;
+  color: #e3dce6;
+}
+
+.delete-board-btn {
+  padding: 5px 10px 5px 10px;
+  border-radius: 3px;
+  color: #e3dce6;
+  border: none;
+  float: right;
+  margin-right: 20px;
+  background: none;
+}
+
+.delete-board-btn .delete-board-btn-text {
+  text-decoration: underline;
+}
+
+.delete-board-btn:hover {
+  background: rgba(0, 0, 0, 0.12);
 }
