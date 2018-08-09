@@ -1,7 +1,12 @@
 import * as API from "../utils/API"
 import { normalize } from "normalizr"
 import Board from "../schemas/Board"
-import { BOARDS_FETCHED, BOARD_FETCHED, BOARD_ADDED } from "../utils/types"
+import {
+  BOARDS_FETCHED,
+  BOARD_FETCHED,
+  BOARD_ADDED,
+  BOARD_DELETED
+} from "../utils/types"
 
 export const boardsFetched = boards => ({
   type: BOARDS_FETCHED,
@@ -16,6 +21,11 @@ export const boardFetched = entities => ({
 export const boardAdded = board => ({
   type: BOARD_ADDED,
   board
+})
+
+export const boardDeleted = boardId => ({
+  type: BOARD_DELETED,
+  boardId
 })
 
 export const fetchBoards = () => async dispatch => {
@@ -34,5 +44,14 @@ export const addBoard = board => async dispatch => {
     dispatch(boardAdded(normalize(addedBoard, Board).entities.boards))
   } catch (err) {
     console.error(err)
+  }
+}
+
+export const deleteBoard = boardId => async dispatch => {
+  try {
+    await API.deleteBoard(boardId)
+    dispatch(boardDeleted(boardId))
+  } catch (err) {
+    console.log(err)
   }
 }

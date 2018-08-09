@@ -26,6 +26,13 @@ export const saveBoard = board =>
     return res.json()
   })
 
+export const deleteBoard = boardId =>
+  fetch(`${api}/board/${boardId}`, {
+    method: "delete"
+  }).then(res => {
+    if (res.status !== 200) throw res
+  })
+
 export const addList = (boardId, list) =>
   fetch(`${api}/board/${boardId}/list/`, {
     method: "post",
