@@ -4,7 +4,8 @@ import {
   ITEM_ADDED,
   LIST_UPDATED,
   LIST_DELETED,
-  ITEM_DELETED
+  ITEM_DELETED,
+  BOARD_DELETED
 } from "../utils/types"
 
 const list = (state = {}, action) => {
@@ -53,6 +54,16 @@ const list = (state = {}, action) => {
         }
       }
     }
+    case BOARD_DELETED:
+      return Object.keys(state)
+        .filter(id => state[id].boardId === action.boardId)
+        .reduce(
+          (acc, id) => ({
+            ...acc,
+            id: state[id]
+          }),
+          {}
+        )
     default:
       return state
   }

@@ -3,7 +3,8 @@ import {
   BOARD_FETCHED,
   BOARD_ADDED,
   LIST_ADDED,
-  LIST_DELETED
+  LIST_DELETED,
+  BOARD_DELETED
 } from "../utils/types"
 
 const boards = (state = {}, action) => {
@@ -27,6 +28,11 @@ const boards = (state = {}, action) => {
         ...state,
         ...action.board
       }
+    case BOARD_DELETED: {
+      const newState = { ...state }
+      delete newState[action.boardId]
+      return { ...newState }
+    }
     case LIST_ADDED: {
       const { boardId, entities } = action
       return {
