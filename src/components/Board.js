@@ -10,7 +10,7 @@ import { deleteBoard } from "../actions/boards"
 const Board = ({ board, removeBoard, history }) => (
   <div className="board">
     <div className="board-title-container">
-      <span>{board.name}</span>
+      <span className="board-title">{board.name}</span>
       <button
         className="delete-board-btn"
         type="button"
@@ -37,7 +37,10 @@ Board.propTypes = {
     name: PropTypes.string.isRequired,
     lists: PropTypes.arrayOf(PropTypes.number.isRequired)
   }).isRequired,
-  removeBoard: PropTypes.func.isRequired
+  removeBoard: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }).isRequired
 }
 
 const mapDispatchToProps = {

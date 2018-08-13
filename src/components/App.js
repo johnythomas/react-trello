@@ -8,6 +8,10 @@ import { fetchBoards } from "../actions/boards"
 import BoardContainer from "../containers/BoardContainer"
 
 class App extends Component {
+  static propTypes = {
+    getBoards: PropTypes.func.isRequired
+  }
+
   async componentDidMount() {
     return this.props.getBoards()
   }
@@ -29,10 +33,6 @@ class App extends Component {
       </BrowserRouter>
     )
   }
-}
-
-App.propTypes = {
-  getBoards: PropTypes.func.isRequired
 }
 
 export default connect(
