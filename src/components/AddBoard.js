@@ -53,7 +53,9 @@ class AddBoard extends Component {
                 value={this.state.boardName}
                 onChange={this.handleNameChange}
               />
-              <button type="submit">Add Board</button>
+              <button className="add-board-btn" type="submit">
+                Add Board
+              </button>
               <button
                 type="button"
                 className="fa fa-times cancel-btn"
